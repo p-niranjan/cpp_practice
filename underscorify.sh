@@ -9,8 +9,16 @@ fi
 # Convert the input string to lowercase, replace spaces with underscores, and append _ before .h
 filename=$(echo "$1" | tr '[:upper:]' '[:lower:]' | sed 's/ /_/g').h
 
+# problem link if present
+problem_link="//$2"
+
 # Create the file in the current directory
 touch "$filename"
 
+# Add the problem link to the file
+echo $problem_link > $filename
+
 # Notify the user
 echo "File '$filename' created successfully."
+
+git add $filename
